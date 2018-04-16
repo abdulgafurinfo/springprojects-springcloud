@@ -3,6 +3,10 @@
 
 # Log file
 *.log
+log
+*.gz
+*.cmd
+
 
 # BlueJ files
 *.ctxt
