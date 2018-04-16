@@ -3,7 +3,7 @@ server:
    
 spring:
   application:
-    name: rest-service
+    name: rest-discovery-app1
   output:
     ansi:
         enabled: DETECT

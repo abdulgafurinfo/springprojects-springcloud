@@ -20,7 +20,7 @@ public class GreetingService {
 		
 		log.info("Access /say-hello");
 
-		List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
+		List<String> greetings = Arrays.asList("Hi there2", "Greetings2", "Salutations2");
 		Random rand = new Random();
 
 		int randomNum = rand.nextInt(greetings.size());
