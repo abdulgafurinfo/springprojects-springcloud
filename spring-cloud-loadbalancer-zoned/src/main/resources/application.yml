@@ -1,0 +1,28 @@
+server:
+   port: ${port:9863}
+   
+spring:
+  application:
+    name: rest-service-loadbalncer
+  output:
+    ansi:
+        enabled: DETECT
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+    
+    
+ 
+  
+logging:
+  config: /home/abdulg/mywork/microservices/logback-spring.xml
+  file: logs/application-debug.log
+  pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN'
+    org.springframework.web: ERROR
+ 
