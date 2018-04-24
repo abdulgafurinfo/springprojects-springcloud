@@ -1,0 +1,28 @@
+server:
+  port: 9091
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+#  ignoredServices: '*'
+# Refer REST-DISCOVERY-APP1 REST-DISCOVERY-APP2
+  routes:
+    app-by-url:
+      path: /app-by-url/**
+      url: http://localhost:9080
+    discovery-by-service:
+      path: /hello/**
+      serviceId: REST-DISCOVERY-APP1
+    rest-discovery-app2: /app2/**
+    static:
+      path: /static/**
+
+spring:
+  application:
+    name: zuul-proxy

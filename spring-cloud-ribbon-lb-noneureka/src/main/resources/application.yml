@@ -1,0 +1,36 @@
+server:
+   port: ${port:9862}
+   
+spring:
+  application:
+    name: rest-client-service
+  output:
+    ansi:
+        enabled: DETECT
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+    
+    
+rest-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:9763,localhost:9764,localhost:9765
+    ServerListRefreshInterval: 15000
+    
+    
+    
+  
+logging:
+  config: /home/abdulg/mywork/microservices/logback-spring.xml
+  file: logs/application-debug.log
+  pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN'
+    org.springframework.web: ERROR
+ 
