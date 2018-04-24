@@ -10,7 +10,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
- 
+
 import com.fasterxml.jackson.dataformat.javaprop.JavaPropsMapper;
 
 public class ServiceInvoker extends RouteBuilder {
@@ -24,7 +24,7 @@ public class ServiceInvoker extends RouteBuilder {
 
 		restConfiguration().host("localhost").port("8080").bindingMode(RestBindingMode.json);
 
-		from("file:///C:/mydownloads/camel-test/input?delay=5000&delay=5000")
+		from("file:///" + "C:/mydownloads/camel-test/input" + "?" + "initialDelay=5000" + "&" + "delay=5000")
 
 				.process(exchange -> {
 
@@ -32,9 +32,7 @@ public class ServiceInvoker extends RouteBuilder {
 					serviceConf = mapper.readValue(input, ServiceConfig.class);
 					exchange.getIn().setBody(serviceConf);
 
-				})
-				.convertBodyTo(ServiceConfig.class)
-				.to("rest:post:api")
+				}).convertBodyTo(ServiceConfig.class).to("rest:post:api")
 
 		;
 

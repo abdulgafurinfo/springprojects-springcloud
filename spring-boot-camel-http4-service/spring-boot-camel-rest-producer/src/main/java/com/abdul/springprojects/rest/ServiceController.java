@@ -26,7 +26,7 @@ public class ServiceController {
 	public ResponseEntity<Void> createRequest(@RequestBody ServiceConfig serviceConfig){
 		
 		logger.info("Trying to create a request");
-		logger.info(serviceConfig.getSourcePath());
+		logger.info(serviceConfig.toString());
 		
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 		
