@@ -24,7 +24,7 @@ public class ServiceInvoker extends RouteBuilder {
 
 		restConfiguration().host("localhost").port("8080").bindingMode(RestBindingMode.json);
 
-		from("file:///" + "C:/mytest")
+		from("file:" + "serviceconfig" + "?" + "autoCreate=true")
 
 				.process(exchange -> {
 
@@ -32,8 +32,9 @@ public class ServiceInvoker extends RouteBuilder {
 					serviceConf = mapper.readValue(input, ServiceConfig.class);
 					exchange.getIn().setBody(serviceConf);
 
-				}).convertBodyTo(ServiceConfig.class).to("rest:put:api")
-				.endRest()
+				}).convertBodyTo(ServiceConfig.class)
+				   .to("rest:put:api/service")
+				   .endRest()
 
 		;
 

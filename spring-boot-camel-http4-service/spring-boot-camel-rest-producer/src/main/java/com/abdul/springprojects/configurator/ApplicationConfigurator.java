@@ -10,8 +10,8 @@ import java.util.Map;
  
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
- 
 import com.abdul.springprojects.serviceconfig.ServiceInvoker;
 import com.abdul.springprojects.util.GlobalCamelContext;
 
@@ -29,6 +29,12 @@ public class ApplicationConfigurator {
 	@Bean
 	public GlobalCamelContext camelInvoker() {
 		return new GlobalCamelContext();
+	}
+	
+	
+	@Bean
+	public RestTemplate restTemplate() {
+		return  new RestTemplate();
 	}
 	
 	 

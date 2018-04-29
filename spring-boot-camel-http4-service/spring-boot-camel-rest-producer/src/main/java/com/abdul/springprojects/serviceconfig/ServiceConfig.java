@@ -1,14 +1,19 @@
 package com.abdul.springprojects.serviceconfig;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Author Abdul Gafur D
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceConfig {
 
+	
 	private String serviceId;
 	private String serviceName;
-
+	@JsonIgnore
+	private String sourcePath;
 	 
 
 	private String remoteEndPoint;
@@ -108,6 +113,14 @@ public class ServiceConfig {
 				+ ", remoteDirMaxFilesPerCycle=" + remoteDirMaxFilesPerCycle + ", targetType=" + targetType
 				+ ", targetURL=" + targetURL + ", targetPort=" + targetPort + ", targetDestination=" + targetDestination
 				+ "]";
+	}
+
+	public String getSourcePath() {
+		return sourcePath;
+	}
+
+	public void setSourcePath(String sourcePath) {
+		this.sourcePath = sourcePath;
 	}
 
 }

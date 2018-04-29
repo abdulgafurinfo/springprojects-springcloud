@@ -43,43 +43,16 @@ public class ServiceController {
 	
 	
 	
-	@RequestMapping(value="/api", method=RequestMethod.PUT)
+	@RequestMapping(value="/api/service", method=RequestMethod.PUT)
 	public boolean createRequest(@RequestBody ServiceConfig serviceConfig){
-		
-		/*logger.info("Trying to create a request");
-		urlParams.put("serviceId", serviceConfig.getServiceId());
-		restTemplate.put(zuulUrl, serviceConfig,urlParams);*/
-		
-		
-		//logger.info(serviceConfig.toString());
-		/*
-		UriComponentsBuilder uriBuilder = UriComponentsBuilder .fromUriString(zuulUrl);
-		urlParams.put("serviceId", serviceConfig.getServiceId());
-		restTemplate.put(uriBuilder.toString(), serviceConfig,urlParams);*/
-		
-		/*HttpHeaders requestHeaders = new HttpHeaders();
-		 List <MediaType> mediaTypeList = new ArrayList<MediaType>();
-	//	 mediaTypeList.add(MediaType.APPLICATION_JSON);
-		 mediaTypeList.add(MediaType.ALL);
-		 requestHeaders.setAccept(mediaTypeList);
-		 requestHeaders.setContentType(MediaType.APPLICATION_JSON);
-		 HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
-		
-		 
-		 ResponseEntity<Object> response = restTemplate.exchange(zuulUrl, HttpMethod.PUT, serviceConfig, ServiceConfig.class, serviceConfig.getServiceId());
-		 if (response == null) {
-		 return false;
-		 }
-		 return HttpStatus.CREATED.equals(response.getStatusCode());*/
-		
+	 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		urlParams.put("serviceId", serviceConfig.getServiceId());
 		HttpEntity<ServiceConfig> requestEntity = new HttpEntity<ServiceConfig>(serviceConfig, headers);
-		logger.info("Trying to create a request");
 		restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ServiceConfig.class, urlParams);
 		 
-		logger.info("Sucessfully create a request");
+		logger.info("Successfully created a request");
 	return new ResponseEntity<Void>(HttpStatus.CREATED) != null;
 		
 	}
