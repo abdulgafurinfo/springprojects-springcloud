@@ -1,0 +1,27 @@
+server:
+   port: ${port:9080}
+   
+spring:
+  application:
+    name: camel-endpoint-resolver
+  output:
+    ansi:
+        enabled: DETECT
+  profiles:
+    active: "dev"
+  main:
+    banner-mode: "off"
+    
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+
+   
+    
+    
+ 
+  
+ 
+ 
