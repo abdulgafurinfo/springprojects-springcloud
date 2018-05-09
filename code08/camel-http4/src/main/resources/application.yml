@@ -1,15 +1,15 @@
 server:
-  port: ${PORT:0}
-   
+  port: ${PORT:9001}  
+    
 spring:
   application:
-    name: user-rest-ftp-service
+    name: user-ftp-rest-service
 
 logging:
-  level:
+  level: 
     com.netflix.discovery: 'OFF'
     org.springframework.cloud: 'DEBUG'
-
+ 
 eureka:
   client:
      registerWithEureka: true
@@ -17,14 +17,6 @@ eureka:
      serviceUrl:
        defaultZone: http://localhost:9761/eureka/
   instance:
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 1
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     
-    
- 
-  
- 
- 
