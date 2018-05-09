@@ -4,22 +4,18 @@ server:
 spring:
   application:
     name: eureka-server
-  output:
-    ansi:
-        enabled: DETECT
-  profiles:
-    active: "dev"
-  main:
-    banner-mode: "off"
+  
     
     
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
-  
+    serviceUrl:
+         defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+ 
 logging:
   file: logs/application-debug.log
   pattern:
